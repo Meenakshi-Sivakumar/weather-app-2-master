@@ -14,12 +14,12 @@ function Earth(props) {
 
        
     useFrame(() => {
-      ref.current.rotation.y += 0.01;
+       ref.current.rotation.y += 0.01;
     });
 
     return (
       <>
-        <mesh {...props} scale={[3,3,3]} ref={ref}>
+        <mesh {...props} scale={[3,3,3]} ref={ref} rotation={[0.4, 0, 0]}>
         <sphereGeometry args={[1,32,32]} />
         <meshStandardMaterial
         map={texture1}
@@ -31,7 +31,7 @@ function Earth(props) {
       />
         </mesh>
         <ambientLight intensity={0.8}/>
-        <directionalLight position={[0.3, 0, 1]} />
+        <directionalLight position={[0.2, 0, 1]} />
       </>
     );
   }
