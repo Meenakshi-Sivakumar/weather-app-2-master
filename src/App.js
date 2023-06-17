@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Canvas } from '@react-three/fiber';
 import Search from './Search';
 import data from './data';
 import WeatherDetails from './WeatherDetails';
 import images from './image-data';
+import Earth from './Earth';
 
 const apiKey = '71acb43b5585168d990ac95d8210debd';
 const currentDate = new Date();
@@ -51,7 +53,6 @@ function App() {
       setWeatherData(data);
     } catch (error) {
       console.log(`Error retrieving weather data: ${error}`);
-      
     }
   }
 
@@ -62,21 +63,24 @@ function App() {
   const handleCityUpdate = (newCity) => {
     setCity(newCity);
   }
-  console.log(weatherData)
+
   return (
     <div className='main-container' style={{ background: 'pink' }} /*style={{ backgroundImage: `url(${image})` }}*/>
-      <div className='hero-weather-details'>
-      <div className='large-temperature'>
-      <h1>{Math.floor(weatherData.main.temp)}°</h1>
-      </div>
-      <div className='location-time'>
-      <h3>{weatherData.name}</h3>
-      <p>{formattedTemplate}</p>
-      </div>
-      <div className='weather-desc'>
-      <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} alt='weather-icon' className='weather-icon'/>
-      <p>{weatherData.weather[0].description}</p>
-      </div>
+  <div className='hero-weather-details'>
+        <Canvas>
+        <Earth position={[0, 0, 0]} />
+        </Canvas>
+        <div className='large-temperature'>
+          <h1>{Math.floor(weatherData.main.temp)}°</h1>
+        </div>
+        <div className='location-time'>
+          <h3>{weatherData.name}</h3>
+          <p>{formattedTemplate}</p>
+        </div>
+        <div className='weather-desc'>
+          <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} alt='weather-icon' className='weather-icon' />
+          <p>{weatherData.weather[0].description}</p>
+        </div>
       </div>
       <div className='side-panel'>
         <Search handleCityUpdate={handleCityUpdate} />
