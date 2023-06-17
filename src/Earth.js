@@ -6,27 +6,34 @@ function Earth(props) {
     const ref = useRef();
     const [hovered, hover] = useState(false);
     const [clicked, click] = useState(false);
-    console.log(hover)
+
+        const texture1 = useTexture("Material.001_baseColor.jpeg"); 
+        const texture2 = useTexture("Material.002_baseColor.jpeg");
+        const normalMap = useTexture("Material.001_normal.jpeg");
+        const roughnessMap = useTexture("Material.001_metallicRoughness.png");
+
+       
     useFrame(() => {
-      ref.current.rotation.x += 0.01;
+      ref.current.rotation.y += 0.01;
     });
-    
+
     return (
-        <>
-        <mesh
-            {...props}
-            ref={ref}
-        >
-            <boxGeometry args={[3, 3, 3]} />
-            <meshStandardMaterial
-            wireframe={props.wireframe}
-            color={"hotpink"}
-            />
+      <>
+        <mesh {...props} scale={[3,3,3]} ref={ref}>
+        <sphereGeometry args={[1,32,32]} />
+        <meshStandardMaterial
+        map={texture1}
+        aoMap={texture2}
+        normalMap={normalMap}
+        roughnessMap={roughnessMap}
+        roughness={1}
+        matalness = {0.1}
+      />
         </mesh>
-        <ambientLight intensity={0.1} />
-        <directionalLight position={[0, 0, 5]} />
-        </>
+        <ambientLight intensity={0.8}/>
+        <directionalLight position={[0.3, 0, 1]} />
+      </>
     );
   }
 
-export default Earth;
+  export default Earth;
