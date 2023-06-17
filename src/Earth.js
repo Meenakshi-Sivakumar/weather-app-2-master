@@ -19,7 +19,7 @@ function Earth(props) {
 
     return (
       <>
-        <mesh {...props} scale={[3,3,3]} ref={ref} rotation={[0.4, 0, 0]}>
+        <mesh {...props} scale={[2.5,2.5,2.5]} ref={ref} rotation={[0.4, 0, 0]}>
         <sphereGeometry args={[1,32,32]} />
         <meshStandardMaterial
         map={texture1}
