@@ -67,9 +67,11 @@ function App() {
   return (
     <div className='main-container' style={{ background: 'pink' }} /*style={{ backgroundImage: `url(${image})` }}*/>
   <div className='hero-weather-details'>
-        <Canvas>
+        <div className='earth-div' style={{height: 300, width: 500}}>
+        <Canvas >
         <Earth position={[0, 0, 0]} />
         </Canvas>
+        </div>
         <div className='large-temperature'>
           <h1>{Math.floor(weatherData.main.temp)}°</h1>
         </div>
