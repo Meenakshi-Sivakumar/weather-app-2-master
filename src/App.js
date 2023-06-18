@@ -68,7 +68,7 @@ function App() {
   return (
     <div className="main-container" style={{ backgroundImage: `url(${image})` }}>
       <div className="hero-weather-details">
-        <div className="earth-div" style={{ height: 300, width: 500 }}>
+        <div className="earth-div" style={{ height: 300, width: 300 }}>
           <Canvas>
             <Earth position={[0, 0, 0]} />
           </Canvas>
