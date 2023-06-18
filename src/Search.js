@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
-const Search = ({ handleCityUpdate }) => {
+const Search = ({ handleCityUpdate, isError }) => {
   const [cityInput, setCityInput] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (cityInput === "") {
-      alert("Enter a city name");
       return;
     }
     handleCityUpdate(cityInput);
@@ -28,6 +27,7 @@ const Search = ({ handleCityUpdate }) => {
             <BsSearch className="react-search-icon" />
           </button>
         </form>
+        {isError ? <p style={{color:'red', fontSize:16, letterSpacing: 1}}>psst! check your spelling.</p> : ''}
       </div>
       <ul className="popular-cities-list">
         <li>
