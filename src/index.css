@@ -133,10 +133,10 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  -webkit-transition: background-image 2s linear;
-  -moz-transition: background-image 2s linear;
-  -o-transition: background-image 2s linear;
-  transition: background-image 2s linear;
+  -webkit-transition: background-image 2s ease-in-out;
+  -moz-transition: background-image 2s ease-in-out;
+  -o-transition: background-image 2s ease-in-out;
+  transition: background-image 2s ease-in-out;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--clr-grey-8);
