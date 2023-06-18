@@ -32,7 +32,7 @@ function App() {
       const currentIndex = images.indexOf(image);
       const nextIndex = (currentIndex + 1) % images.length;
       setImage(images[nextIndex]);
-    }, 6000);
+    }, 8000);
 
     return () => {
       clearTimeout(timer);
