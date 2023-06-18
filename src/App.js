@@ -19,7 +19,7 @@ const options = {
 };
 
 const formattedDate = currentDate.toLocaleString('en-US', options);
-const formattedTemplate = `${formattedDate}`
+const formattedTemplate = `${formattedDate}`;
 
 function App() {
   const [image, setImage] = useState(images[0]);
@@ -34,7 +34,7 @@ function App() {
     }, 6000);
 
     return () => {
-      clearTimeout(timer); 
+      clearTimeout(timer);
     };
   }, [image]);
 
@@ -45,10 +45,10 @@ function App() {
       const response = await fetch(url);
 
       if (response.status === 404) {
-        alert("check your spelling");
+        alert('Check your spelling');
         return;
       }
-  
+
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {
@@ -62,29 +62,33 @@ function App() {
 
   const handleCityUpdate = (newCity) => {
     setCity(newCity);
-  }
+  };
 
   return (
-    <div className='main-container' style={{ background: 'pink' }} /*style={{ backgroundImage: `url(${image})` }}*/>
-  <div className='hero-weather-details'>
-        <div className='earth-div' style={{height: 300, width: 500}}>
-        <Canvas >
-        <Earth position={[0, 0, 0]} />
-        </Canvas>
+    <div className="main-container" style={{ backgroundImage: `url(${image})` }}>
+      <div className="hero-weather-details">
+        <div className="earth-div" style={{ height: 300, width: 500 }}>
+          <Canvas>
+            <Earth position={[0, 0, 0]} />
+          </Canvas>
         </div>
-        <div className='large-temperature'>
+        <div className="large-temperature">
           <h1>{Math.floor(weatherData.main.temp)}°</h1>
         </div>
-        <div className='location-time'>
+        <div className="location-time">
           <h3>{weatherData.name}</h3>
           <p>{formattedTemplate}</p>
         </div>
-        <div className='weather-desc'>
-          <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} alt='weather-icon' className='weather-icon' />
+        <div className="weather-desc">
+          <img
+            src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+            alt="weather-icon"
+            className="weather-icon"
+          />
           <p>{weatherData.weather[0].description}</p>
         </div>
       </div>
-      <div className='side-panel'>
+      <div className="side-panel">
         <Search handleCityUpdate={handleCityUpdate} />
         <WeatherDetails weatherData={weatherData} />
       </div>
