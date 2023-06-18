@@ -25,7 +25,8 @@ function App() {
   const [image, setImage] = useState(images[0]);
   const [city, setCity] = useState('Salem');
   const [weatherData, setWeatherData] = useState(data);
-
+  const [isError, setIsError] = useState(false);
+  console.log(isError);
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = images.indexOf(image);
@@ -45,10 +46,10 @@ function App() {
       const response = await fetch(url);
 
       if (response.status === 404) {
-        alert('Check your spelling');
+        setIsError(true);
         return;
       }
-
+      setIsError(false);
       const data = await response.json();
       setWeatherData(data);
     } catch (error) {
@@ -89,7 +90,7 @@ function App() {
         </div>
       </div>
       <div className="side-panel">
-        <Search handleCityUpdate={handleCityUpdate} />
+        <Search handleCityUpdate={handleCityUpdate} isError={isError}/>
         <WeatherDetails weatherData={weatherData} />
       </div>
     </div>
