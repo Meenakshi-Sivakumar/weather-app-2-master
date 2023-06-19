@@ -18,8 +18,8 @@ const options = {
   hour12: true,
 };
 
-const formattedDate = currentDate.toLocaleString('en-US', options);
-const formattedTemplate = `${formattedDate}`;
+const formattedTemplate = currentDate.toLocaleString('en-US', options);
+// const formattedTemplate = `${formattedDate}`;
 
 function App() {
   const [image, setImage] = useState(images[0]);
@@ -27,6 +27,8 @@ function App() {
   const [weatherData, setWeatherData] = useState(data);
   const [isError, setIsError] = useState(false);
   console.log(isError);
+
+  //slideShow
   useEffect(() => {
     const timer = setTimeout(() => {
       const currentIndex = images.indexOf(image);
@@ -39,6 +41,7 @@ function App() {
     };
   }, [image]);
 
+  //API fetch
   async function api_call(city) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
